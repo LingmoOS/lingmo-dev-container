@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 export  DEBIAN_FRONTEND=noninteractive
 # For compability issues in bsaefiles of Lingmo OS
 touch /etc/apt/sources.list
@@ -15,6 +17,8 @@ echo "deb [trusted=yes] https://nightly-packages.simplelinux.cn.eu.org/ nightly 
 curl -o /etc/apt/trusted.gpg.d/lingmo-nightly-signing.key.asc --create-dirs https://raw.githubusercontent.com/LingmoOS/live-build-config/a84c6e0429572e144fe720611218a3bdb063b112/lingmo-config/common/archives/lingmo-nightly-signing.key.chroot 
 
 apt update 
+
+apt install dbus -y
 
 apt full-upgrade  -y 
 
