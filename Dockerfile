@@ -32,14 +32,13 @@
             libgdiplus \
             jq \
             # By default pip is not available in the buildpacks image
-            python-pip-whl \
             python3-pip \
             #.NET Core related pre-requisites
             libc6 \
             libgcc1 \
             libgssapi-krb5-2 \
-            libncurses5 \
-            liblttng-ust0 \
+            libncurses6 \
+            liblttng-ust-dev \
             libssl-dev \
             libstdc++6 \
             zlib1g \
@@ -47,7 +46,6 @@
             libunwind8 \
             sqlite3 \
             libsqlite3-dev \
-            software-properties-common \
             tk-dev \
             uuid-dev \
             curl \
