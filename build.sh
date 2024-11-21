@@ -4,6 +4,9 @@ set -e
 
 export  DEBIAN_FRONTEND=noninteractive
 # For compability issues in bsaefiles of Lingmo OS
+
+apt update && apt install -y aptitude
+
 touch /etc/apt/sources.list
 
 rm /etc/apt/sources.list.d/debian.sources | true
@@ -16,10 +19,8 @@ echo "deb [trusted=yes] https://nightly-packages.simplelinux.cn.eu.org/ nightly 
 
 curl -o /etc/apt/trusted.gpg.d/lingmo-nightly-signing.key.asc --create-dirs https://raw.githubusercontent.com/LingmoOS/live-build-config/a84c6e0429572e144fe720611218a3bdb063b112/lingmo-config/common/archives/lingmo-nightly-signing.key.chroot 
 
-apt update 
+aptitude update 
 
-apt install -y dbus-bin dbus-daemon dbus-session-bus-common dbus-system-bus-common 
-
-# apt full-upgrade  -y 
+aptitude safe-upgrade -y
 
 apt-get clean
