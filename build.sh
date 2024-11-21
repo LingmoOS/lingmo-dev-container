@@ -21,6 +21,6 @@ curl -o /etc/apt/trusted.gpg.d/lingmo-nightly-signing.key.asc --create-dirs http
 
 aptitude update 
 
-aptitude safe-upgrade -y
+aptitude upgrade -y --full-resolver
 
 apt-get clean
