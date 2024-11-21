@@ -7,6 +7,8 @@
     FROM debian:trixie
 
     COPY first-run-notice.txt /tmp/scripts/
+
+    COPY change_source.sh /tmp/scripts/
     
     ENV LANG="C.UTF-8"
     
@@ -55,9 +57,7 @@
         # This is the folder containing 'links' to benv and build script generator
         && apt-get update \
         && apt-get upgrade -y \
-        && rm /etc/apt/sources.list.d/debian.sources | true \
-        && rm /etc/apt/sources.list | true \
-        && echo -e "Types: deb\nURIs: http://debian-archive.trafficmanager.net/debian\nSuites: trixie trixie-updates trixie-backports\nComponents: main contrib non-free non-free-firmware\nSigned-By: /usr/share/keyrings/debian-archive-keyring.gpg\n\n# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释\n# Types: deb-src\n# URIs: http://debian-archive.trafficmanager.net/debian\n# Suites: trixie trixie-updates trixie-backports\n# Components: main contrib non-free non-free-firmware\n# Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg\n\n# 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换\nTypes: deb\nURIs: http://debian-archive.trafficmanager.net/debian-security\nSuites: trixie-security\nComponents: main contrib non-free non-free-firmware\nSigned-By: /usr/share/keyrings/debian-archive-keyring.gpg\n\n# Types: deb-src\n# URIs: http://debian-archive.trafficmanager.net/debian-security\n# Suites: trixie-security\n# Components: main contrib non-free non-free-firmware\n# Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg" > /etc/apt/sources.list.d/debian.sources \ 
+        && bash /tmp/scripts/change_source.sh \
         && rm -rf /var/lib/apt/lists/*
     
     # Verify expected build and debug tools are present
