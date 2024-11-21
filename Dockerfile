@@ -18,7 +18,7 @@
             unzip \
             # The tools in this package are used when installing packages for Python
             build-essential \
-            swig3.0 \
+            swig \
             # Required for Microsoft SQL Server
             unixodbc-dev \
             # Required for PostgreSQL
