@@ -18,8 +18,8 @@ curl -o /etc/apt/trusted.gpg.d/lingmo-nightly-signing.key.asc --create-dirs http
 
 apt update 
 
-apt install dbus -y
+apt install -y dbus-bin dbus-daemon dbus-session-bus-common dbus-system-bus-common 
 
-apt full-upgrade  -y 
+# apt full-upgrade  -y 
 
 apt-get clean
