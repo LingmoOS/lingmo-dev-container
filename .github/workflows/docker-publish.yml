@@ -79,11 +79,13 @@ jobs:
           image_name="lingmo-dev-container"
 
           # Push will upload the image to a registry when done (if logged in via docker CLI)
-          push_flag="true"
+          push_flag="false"
           
           # If more than one platform is specified, then push must be set.
           platforms="linux/amd64"
           devcontainer build --image-name $image_name --platform "$platforms" --push $push_flag --workspace-folder ..
+
+          docker push ghcr.io/lingmoos/lingmo-dev-container:main
       
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
