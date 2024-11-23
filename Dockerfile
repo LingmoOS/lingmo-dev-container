@@ -53,6 +53,8 @@
             curl \
             gettext \
             inotify-tools \
+            # clangd for code indexing
+            clangd \
         && rm -rf /var/lib/apt/lists/* \
         # This is the folder containing 'links' to benv and build script generator
         && apt-get update \
