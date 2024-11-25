@@ -17,12 +17,7 @@
         },
         "ghcr.io/devcontainers/features/github-cli:1": {
             "version": "latest"
-        },
-       "ghcr.io/devcontainers/features/desktop-lite:1": {
-           "password": "lingmo",
-           "webPort": "6080",
-           "vncPort": "5901"
-       }
+        }
     },
     "overrideFeatureInstallOrder": [
         "ghcr.io/devcontainers/features/common-utils",
