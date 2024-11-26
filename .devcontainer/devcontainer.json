@@ -29,7 +29,12 @@
     "containerUser": "codespace",
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
+    "forwardPorts": [6080],
+    "portsAttributes": {
+        "6080": {
+          "label": "desktop"
+        }
+    },
 
     // Configure tool-specific properties.
     "customizations": {
@@ -37,10 +42,6 @@
         "vscode": {
             // Set *default* container specific settings.json values on container create.
             "settings": {
-                "go.toolsManagement.checkForUpdates": "local",
-                "go.useLanguageServer": true,
-                "go.gopath": "/go",
-                "python.defaultInterpreterPath": "/home/codespace/.python/current/bin/python3",
                 "jupyter.kernels.filter": [
                     {
                         "path": "/opt/conda/bin/python",
@@ -67,7 +68,8 @@
             },
             // Add the IDs of extensions you want installed when the container is created.
             "extensions": [
-                "GitHub.vscode-pull-request-github"
+                "GitHub.vscode-pull-request-github",
+                "ms-vscode.cpptools-extension-pack"
             ]
         }
     }
