@@ -88,8 +88,6 @@
         && printf "$FISH_PROMPT" >> /etc/fish/functions/fish_prompt.fish \
         && printf "if type code-insiders > /dev/null 2>&1; and not type code > /dev/null 2>&1\n  alias code=code-insiders\nend" >> /etc/fish/conf.d/code_alias.fish
     
-    # Remove scripts now that we're done with them
-    RUN apt-get clean -y && rm -rf /tmp/scripts
     
     # Mount for docker-in-docker 
     VOLUME [ "/var/lib/docker" ]
@@ -138,3 +136,7 @@
     COPY docker-novnc /app
     COPY docker-novnc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
     EXPOSE 8080
+    CMD service supervisord start
+
+    # Remove scripts now that we're done with them
+    RUN apt-get clean -y && rm -rf /tmp/scripts
