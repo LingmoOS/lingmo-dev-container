@@ -131,6 +131,6 @@
         DISPLAY_HEIGHT=768 \
         RUN_XTERM=yes \
         RUN_FLUXBOX=yes
-    COPY ../docker-novnc /app
-    COPY ../docker-novnc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+    COPY docker-novnc /app
+    COPY docker-novnc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
     EXPOSE 8080
