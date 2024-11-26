@@ -136,7 +136,6 @@
     COPY docker-novnc /app
     COPY docker-novnc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
     EXPOSE 8080
-    CMD service supervisord start
 
     # Remove scripts now that we're done with them
     RUN apt-get clean -y && rm -rf /tmp/scripts
