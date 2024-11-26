@@ -1,0 +1,11 @@
+[Unit]
+Description=noVNC service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=bash /app/entrypoint.sh
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

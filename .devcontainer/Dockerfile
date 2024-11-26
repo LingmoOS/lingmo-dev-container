@@ -104,3 +104,33 @@
 
     RUN echo "deb [trusted=yes] https://nightly-packages.simplelinux.cn.eu.org/ nightly experimental" > /etc/apt/sources.list.d/lingmo-nightly.list
     RUN curl -o /etc/apt/trusted.gpg.d/lingmo-nightly-signing.key.asc --create-dirs https://raw.githubusercontent.com/LingmoOS/live-build-config/a84c6e0429572e144fe720611218a3bdb063b112/lingmo-config/common/archives/lingmo-nightly-signing.key.chroot 
+
+    # Setup noVNC
+    # Install git, supervisor, VNC, & X11 packages
+    RUN set -ex; \
+        apt-get update; \
+        apt-get install -y \
+        bash \
+        fluxbox \
+        git \
+        net-tools \
+        novnc \
+        supervisor \
+        x11vnc \
+        xterm \
+        xvfb   
+
+        # Setup demo environment variables
+    ENV HOME=/home/codespace \
+        DEBIAN_FRONTEND=noninteractive \
+        LANG=en_US.UTF-8 \
+        LANGUAGE=en_US.UTF-8 \
+        LC_ALL=C.UTF-8 \
+        DISPLAY=:0.0 \
+        DISPLAY_WIDTH=1024 \
+        DISPLAY_HEIGHT=768 \
+        RUN_XTERM=yes \
+        RUN_FLUXBOX=yes
+    COPY ../docker-novnc /app
+    COPY ../docker-novnc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+    EXPOSE 8080
